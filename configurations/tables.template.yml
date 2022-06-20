@@ -1,0 +1,121 @@
+Resources:
+  districts:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+      TableName: "districts"
+      BillingMode: PAY_PER_REQUEST
+
+  schools:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: "S"
+        - AttributeName: "schoolType"
+          AttributeType: "N"
+      KeySchema:
+        - AttributeName: "districtId"
+          KeyType: "HASH"
+        - AttributeName: "id"
+          KeyType: "RANGE"
+      TableName: "schools"
+      BillingMode: PAY_PER_REQUEST
+
+  staff:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "firstName"
+          AttributeType: "S"
+        - AttributeName: "middleName"
+          AttributeType: "S"
+        - AttributeName: "lastName"
+          AttributeType: "S"
+        - AttributeName: "gender"
+          AttributeType: "S"
+        - AttributeName: "salary"
+          AttributeType: "N"
+        - AttributeName: "email"
+          AttributeType: "S"
+        - AttributeName: "address"
+          AttributeType: "S"
+        - AttributeName: "phoneNumber"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "schoolId"
+          KeyType: "HASH"
+        - AttributeName: "id"
+          KeyType: "RANGE"
+      TableName: "staff"
+      BillingMode: PAY_PER_REQUEST
+
+  students:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "firstName"
+          AttributeType: "S"
+        - AttributeName: "middleName"
+          AttributeType: "S"
+        - AttributeName: "lastName"
+          AttributeType: "S"
+        - AttributeName: "gender"
+          AttributeType: "S"
+        - AttributeName: "email"
+          AttributeType: "S"
+        - AttributeName: "address"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "schoolId"
+          KeyType: "HASH"
+        - AttributeName: "id"
+          KeyType: "RANGE"
+      TableName: "students"
+      BillingMode: PAY_PER_REQUEST
+
+  classes:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: "S"
+        - AttributeName: "subject"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "studentId"
+          KeyType: "HASH"
+        - AttributeName: "id"
+          KeyType: "RANGE"
+      TableName: "classes"
+      BillingMode: PAY_PER_REQUEST
+
+
+  assignments:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "name"
+          AttributeType: "S"
+        - AttributeName: "score"
+          AttributeType: "N"
+        - AttributeName: "studentScore"
+          AttributeType: "N"
+        - AttributeName: "maxScore"
+          AttributeType: "N"
+        - AttributeName: "notes"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+        - AttributeName: "studentId"
+          KeyType: "RANGE"
+      TableName: "assignments"
+      BillingMode: PAY_PER_REQUEST
+
+

@@ -1,0 +1,68 @@
+District {
+    id : String [HASH-KEY]
+    name : String
+{
+
+School {
+    districtId : String [HASH-KEY]
+    id : String [RANGE-KEY]
+    name : String
+    schoolType : int
+}
+
+Staff {
+    schoolId : String [HASH-KEY]
+    id : String [RANGE-KEY]
+    firstName : String
+    middleName : String
+    lastName :
+    gender : String
+    salary : int
+    email : String
+    address : String
+    phoneNumber : String
+}
+
+Students {
+    schoolId : String [HASH-KEY]
+    id : String [RANGE-KEY]
+    firstName : String
+    middleName : String
+    lastName : String
+    gender : String
+    email : String
+    address : String
+}
+
+Classes {
+    studentId : String [HASH-KEY]
+    id : String [RANGE-KEY]
+    name : String
+    subject : String
+    assignments : (List<String> id)
+}
+
+Assignments {
+    id : String [HASH-KEY]
+    studentId : String [RANGE-KEY]
+    name : String
+    studentScore : int
+    maxScore : int
+    notes : String
+}
+
+[Tables]
+districts
+assignments
+schools
+students
+staff
+classes
+
+
+
+
+
+
+
+
