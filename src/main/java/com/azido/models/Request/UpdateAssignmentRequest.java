@@ -1,0 +1,141 @@
+package com.azido.models.Request;
+
+public class UpdateAssignmentRequest {
+
+    private String id;
+    private String studentId;
+    private String title;
+    private int studentScore;
+    private int maxScore;
+    private String notes;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getStudentScore() {
+        return studentScore;
+    }
+
+    public void setStudentScore(int studentScore) {
+        this.studentScore = studentScore;
+    }
+
+    public int getMaxScore() {
+        return maxScore;
+    }
+
+    public void setMaxScore(int maxScore) {
+        this.maxScore = maxScore;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UpdateAssignmentRequest that = (UpdateAssignmentRequest) o;
+
+        if (!id.equals(that.id)) return false;
+        return studentId.equals(that.studentId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + studentId.hashCode();
+        return result;
+    }
+
+    public UpdateAssignmentRequest(String id, String studentId) {
+        this.id = id;
+        this.studentId = studentId;
+    }
+
+    public UpdateAssignmentRequest() {}
+
+    public UpdateAssignmentRequest(Builder builder) {
+        this.id = builder.id;
+        this.studentId = builder.studentId;
+        this.title = builder.title;
+        this.studentScore = builder.studentScore;
+        this.maxScore = builder.maxScore;
+        this.notes = builder.notes;
+    }
+
+
+    public static final class Builder {
+        private String id;
+        private String studentId;
+        private String title;
+        private int studentScore;
+        private int maxScore;
+        private String notes;
+
+        private Builder() {
+
+        }
+
+        public Builder withId(String IdToUse) {
+            this.id = IdToUse;
+            return this;
+        }
+
+        public Builder withStudentId(String studentIdToUse) {
+            this.studentId = studentIdToUse;
+            return this;
+        }
+
+        public Builder withTitle(String titleToUse) {
+            this.title = titleToUse;
+            return this;
+        }
+
+        public Builder withStudentScore(int studentScoreToUse) {
+            this.studentScore = studentScoreToUse;
+            return this;
+        }
+
+        public Builder withMaxScore(int maxScoreToUse) {
+            this.maxScore = maxScoreToUse;
+            return this;
+        }
+
+        public Builder withNotes(String notesToUse) {
+            this.notes = notesToUse;
+            return this;
+        }
+
+        public UpdateAssignmentRequest build() {
+            return new UpdateAssignmentRequest(this);
+        }
+    }
+}
